@@ -1,0 +1,32 @@
+Painel V11
+
+apt update && apt install apache2 mysql-server libssh2-1-dev libssh2-php php5 libapache2-mod-php5 php5-mcrypt php5-curl curl unzip cron mcrypt phpmyadmin -y
+
+cd /var/www/html/
+
+wget http://calangovps.duckdns.org:88/paneil11penguinehis.zip && unzip paneil11penguinehis.zip && rm -R index.html && rm -R paneil11penguinehis.zip
+
+crontab -e
+
+* * * * * root /usr/bin/php /var/www/html/pages/system/cron.php
+* * * * * root /usr/bin/php /var/www/html/pages/system/cron.ssh.php
+* * * * * root /usr/bin/php /var/www/html/pages/system/cron.sms.php
+* * * * * root /usr/bin/php /var/www/html/pages/system/cron.online.ssh.php
+10 * * * * root /usr/bin/php /var/www/html/pages/system/cron.servidor.php
+
+
+chmod 777 /var/www/html/admin/pages/servidor/ovpn
+chmod 777 /var/www/html/admin/pages/download
+chmod 777 /var/www/html/admin/pages/faturas/comprovantes
+
+nano /var/www/html/pages/system/pass.php
+
+
+Login inicial: admin
+
+Senha inicial: admin
+
+Instalação Script cliente
+
+wget http://calangovps.duckdns.org:88/scripts.zip && unzip scripts.zip && chmod 777 * && rm -R scripts.zip
+
